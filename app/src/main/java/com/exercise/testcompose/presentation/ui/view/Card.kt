@@ -15,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -72,7 +73,12 @@ fun Card(cardState: CardState) {
                     /* Card Number */
                     Text(
                         text = initial.chunked(4).joinToString(" "),
-                        style = MaterialTheme.typography.h5,
+                        style = MaterialTheme.typography.h4.copy(
+                            shadow = Shadow(
+                                offset = Offset(4f, 4f),
+                                blurRadius = 8f
+                            )
+                        ),
                         maxLines = 1,
                         modifier = Modifier
                             .animateContentSize(spring())
