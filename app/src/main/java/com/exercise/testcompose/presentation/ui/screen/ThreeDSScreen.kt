@@ -10,6 +10,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.exercise.testcompose.entity.RedirectUrl
+import com.exercise.testcompose.presentation.routing.Screen
 import com.exercise.testcompose.presentation.view_model.ThreeDSViewModel
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -41,10 +42,6 @@ fun ThreeDSScreen(url: String, navController: NavController, viewModel: ThreeDSV
 
 private fun routeToNextScreen(navController: NavController, isSuccess: Boolean): Boolean {
     navController.popBackStack()
-    if (isSuccess) {
-        // TODO attach success screen
-    } else {
-        // TODO attach failure screen
-    }
+    navController.navigate(Screen.Status.createRoute(isSuccess))
     return false
 }

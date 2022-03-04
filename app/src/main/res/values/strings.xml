@@ -7,4 +7,6 @@
     <string name="cvc">CVC</string>
     <string name="pay">Pay</string>
     <string name="payment">Payment</string>
+    <string name="success_msg">Payment completed :)</string>
+    <string name="failure_msg">Payment failed :(</string>
 </resources>

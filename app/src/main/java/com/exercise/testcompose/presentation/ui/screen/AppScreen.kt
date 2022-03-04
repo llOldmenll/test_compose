@@ -14,14 +14,21 @@ import com.exercise.testcompose.presentation.routing.Screen
 fun AppScreen() {
     val navController = rememberNavController()
     NavHost(navController, startDestination = Screen.Payment.route) {
-        composable(route = Screen.Payment.route) {
-            PaymentScreen(navController)
+        composable(route = Screen.Payment.route) { PaymentScreen(navController) }
+
+        composable(
+            route = Screen.Status.route,
+            arguments = listOf(navArgument(Screen.Status.statusKey) { type = NavType.BoolType })
+        ) {
+            val status = it.arguments?.getBoolean(Screen.Status.statusKey) ?: false
+            StatusScreen(status, navController)
         }
+
         composable(
             route = Screen.ThreeDS.route,
             arguments = listOf(navArgument(Screen.ThreeDS.urlKey) { type = NavType.StringType })
-        ) { backStackEntry ->
-            val url = backStackEntry.arguments?.getString(Screen.ThreeDS.urlKey)
+        ) {
+            val url = it.arguments?.getString(Screen.ThreeDS.urlKey)
             requireNotNull(url) { "Url can't be null." }
             ThreeDSScreen(url, navController)
         }

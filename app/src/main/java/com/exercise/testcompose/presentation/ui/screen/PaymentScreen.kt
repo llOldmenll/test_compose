@@ -1,9 +1,15 @@
 package com.exercise.testcompose.presentation.ui.screen
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -58,15 +64,32 @@ fun PaymentScreen(navController: NavController, viewModel: PaymentViewModel = hi
         }
 
     }
+
+    AnimatedVisibility(
+        visible = viewModel.cardState.isLoading.value,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colors.background.copy(alpha = 0.7f))
+                .clickable(enabled = true) { }
+        ) {
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        }
+    }
+
 }
 
 private fun routeToNextScreen(navController: NavController, threeDS: ThreeDS) {
     if (threeDS.url.isNotEmpty()) navController.navigate(Screen.ThreeDS.createRoute(threeDS.url))
+    else navController.navigate(Screen.Status.createRoute(false))
 }
 
 @ExperimentalAnimationApi
 @Preview
 @Composable
-fun PreviewAddPaymentCard() {
+fun PreviewPaymentScreen() {
     PaymentScreen(rememberNavController())
 }

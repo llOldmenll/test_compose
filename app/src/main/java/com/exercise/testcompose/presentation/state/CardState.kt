@@ -12,5 +12,6 @@ data class CardState(
     val cardType: MutableState<CardType> = mutableStateOf(CardType.Unknown),
     val cardNumberError: MutableState<Boolean> = mutableStateOf(false),
     val expiryDateError: MutableState<Boolean> = mutableStateOf(false),
-    val cvvNumberError: MutableState<Boolean> = mutableStateOf(false)
+    val cvvNumberError: MutableState<Boolean> = mutableStateOf(false),
+    val isLoading: MutableState<Boolean> = mutableStateOf(false)
 )
