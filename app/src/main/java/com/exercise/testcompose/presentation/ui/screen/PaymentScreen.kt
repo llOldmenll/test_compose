@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.exercise.domain.entity.ThreeDS
 import com.exercise.testcompose.presentation.view_model.PaymentViewModel
 import com.exercise.testcompose.R
+import com.exercise.testcompose.presentation.routing.Screen
 import com.exercise.testcompose.presentation.ui.theme.Shapes
 import com.exercise.testcompose.presentation.ui.view.CardInputFields
 import com.exercise.testcompose.presentation.ui.view.Card
@@ -60,7 +61,7 @@ fun PaymentScreen(navController: NavController, viewModel: PaymentViewModel = hi
 }
 
 private fun routeToNextScreen(navController: NavController, threeDS: ThreeDS) {
-    // TODO: Open 3DS
+    if (threeDS.url.isNotEmpty()) navController.navigate(Screen.ThreeDS.createRoute(threeDS.url))
 }
 
 @ExperimentalAnimationApi

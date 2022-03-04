@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.exercise.testcompose.R
 import com.exercise.testcompose.presentation.ui.screen.AppScreen
+import com.exercise.testcompose.presentation.ui.screen.PaymentScreen
 import com.exercise.testcompose.presentation.ui.theme.TestComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
