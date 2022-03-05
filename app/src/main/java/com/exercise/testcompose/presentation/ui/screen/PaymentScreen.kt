@@ -38,7 +38,7 @@ fun PaymentScreen(navController: NavController, viewModel: PaymentViewModel = hi
 
         Text(
             text = stringResource(R.string.payment),
-            style = MaterialTheme.typography.h4,
+            style = MaterialTheme.typography.h4.copy(color = MaterialTheme.colors.surface),
             modifier = Modifier.padding(bottom = 20.dp)
         )
 
