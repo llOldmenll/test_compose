@@ -7,3 +7,12 @@ java {
     sourceCompatibility = JavaVersion.VERSION_1_7
     targetCompatibility = JavaVersion.VERSION_1_7
 }
+
+dependencies {
+    // Testing
+    testImplementation testLibs.junit
+    testImplementation testLibs.mockito
+    testImplementation testLibs.mockito_inline
+    testImplementation testLibs.mockito_kotlin
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2"
+}
